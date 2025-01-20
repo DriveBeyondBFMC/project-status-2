@@ -15,7 +15,7 @@ Description: This is a report article on the status of project 2.
 # Task 1 Speed calibration
 ## 📂 Project Directory Structure
 ```bash
-~/project-status-1/ 
+~/project-status-2/ 
 /src/task_1
 ├── reading_velocity.ino
 └── speedingmotor.hpp
@@ -32,8 +32,13 @@ Description: This is a report article on the status of project 2.
    - File: `speedingmotor.hpp`
    - Functionality: Adjust the step value to make the actual speed closely match the theoretical speed.
 
-![Task Image 1](images/task1_image.png)
-![Task Image 1](images/task1_1_image.png)
+<div style="text-align: center;">
+  <img src="images/task1_image.png" alt="Task 1 Image" >
+</div>
+
+<div style="text-align: center;">
+  <img src="images/task1_1_image.png" alt="Task 1 Image" width="458" height="677">
+</div>
 
 # Task 2 Smoothing the raw path
 ## 📂 Project Directory Structure
@@ -43,7 +48,7 @@ Description: This is a report article on the status of project 2.
 └── Path_smoothing.py
 ```
 ## 📝 Description
-    Since the raw path from the pathfinding algorithm consists of discrete waypoints, the cubic spline algorithm was used to generate a continuous trajectory that interpolates through a given set of waypoints. This technique helps reduce sudden changes at sharp corners and make the control algorithm more stable.
+   Since the raw path from the pathfinding algorithm consists of discrete waypoints, the cubic spline algorithm was used to generate a continuous trajectory that interpolates through a given set of waypoints. This technique helps reduce sudden changes at sharp corners and make the control algorithm more stable.
 
 **Draw spline**  
    - File: `Path_smoothing.py`  
@@ -69,7 +74,7 @@ Lane following leverages the contrast between lane markings and the road. It det
    - Functionality: This script defines a class that receives frames from `threadCamera.py` and calculates the angle for the car to stay in lane.
 
 **Communication between `detector.py` and  `autopilot.py` with frame debugging**  
-   - File: `connection.txt`  
+   - File: `connection.py`  
    - Functionality: This script uses sockets to send angle values to autopilot.py for automatic steering and serves as a frame debugger for tasks like segmentation.
 
 **Automatic Steering**
@@ -79,7 +84,10 @@ Lane following leverages the contrast between lane markings and the road. It det
 
 ![Task Image 3](images/task3_image.png)
 
-![Task Image 3](images/task3_1_image.png)
+
+<div style="text-align: center;">
+  <img src="images/task3_1_image.png" alt="Task 1 Image" width="458" height="258">
+</div>
 
 
 # Task 4 Training a model for sign detection
@@ -87,9 +95,14 @@ Lane following leverages the contrast between lane markings and the road. It det
 ```bash
 ~/project-status-2/ 
 /src/task_4
-├── scheduler.py
+├── scheduler.sh
 ├── SignDetectionTest.py
-└── SignDetectionTrain.py
+├── SignDetectionTrain.py
+└── weights
+   ├── best.onnx
+   ├── best.pt
+   ├── bestQuantDynamic.onnx
+   └── bestQuantStatic.onnx
 ```
 
 ## 📝 Description
@@ -98,9 +111,20 @@ Sign detection focuses on identifying and classifying traffic signs to enhance v
 **Model Training for Traffic Sign Detection**  
    - File: `signDetectionTrain.py`
    - Functionality: This script trains a traffic sign detection model using a labeled dataset. It includes data preprocessing, model training, and saving the trained model for inference.
+
 **Automation and Scheduling**  
-   - File: `scheduler.py` 
+   - File: `scheduler.sh` 
    - Functionality: This shell script automates the training by specifying how many times we need to retrain, epochs, batchsize and which YOLO model to use
+
+**Traffic Sign Detection Testing**
+
+- **File**: SignDetectionTest.py
+- **Functionality**: This script tests the trained model on video captured from the car to evaluate its accuracy and performance in detecting and classifying traffic signs.
+
+**Trained model**
+
+- **File**: best.pt; best.onnx; bestQuantDynamics.onnx; bestQuantStatic.onnx
+- **Functionality**: Files that contains trained weights for YOLO model
 
 ![Task Image 4](images/task4_image.png)
 
@@ -178,7 +202,7 @@ Using the pure pursuit algorithm combined with spline curves to generate a traje
 
 ### Simulate Pure pursuit algorithm
 - File: `pure_pursuit.py`
-- Functionality: Cho các giá trị về quỹ đạo đường đi, tọa độ ban đầu, vận tốc để mô phỏng đánh giá thuật toán 
+- Functionality: Provide trajectory values, initial coordinates, and velocity to simulate and evaluate the algorithm.
 
 ### Reading and writing the data to control vehicle 
 - File: `vehicle_control_system.py`
